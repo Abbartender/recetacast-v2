@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     let userContent;
     if (imageBase64) {
       userContent = [
-        { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: imageBase64 } },
+        { type: 'image', source: { type: 'base64', media_type: file.type || 'image/jpeg', data: imageBase64 } },
         { type: 'text', text: recipeText ? `Receta en imagen. Adicional: ${recipeText}. Generá el script.` : 'Esta es la receta. Generá el script de podcast.' }
       ];
     } else {
