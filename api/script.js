@@ -16,8 +16,7 @@ export default async function handler(req, res) {
       historia: `Empezá con el origen histórico y cultural en ${langName}. ${hostLine} Contexto, época, curiosidades. Luego transicioná a la receta completa.`,
       asmr: `Describí la receta de forma lenta y sensorial en ${langName}. ${hostLine} Texturas, aromas, sonidos, temperatura. Frases largas y pausadas.`
     };
-const systemPrompt = `Respondé ÚNICAMENTE con el script de audio listo para leer en voz alta, en ${langName}. Sin títulos, sin markdown, sin corchetes. Solo texto continuo narrado. Sé directo y conciso, máximo 120 palabras. Sin metáforas exageradas ni frases poéticas. Presentá la receta de forma clara y práctica. ${styles[style] || styles.podcast}`;
-    let userContent;
+const systemPrompt = `Respondé ÚNICAMENTE con el script de audio listo para leer en voz alta, en ${langName}. Sin títulos, sin markdown, sin corchetes. Solo texto continuo narrado. Máximo 100 palabras. Usá SOLO la información de la receta proporcionada, sin agregar historia, metáforas ni contexto extra. Presentá los ingredientes y pasos de forma directa y clara. ${styles[style] || styles.podcast}`;    let userContent;
     if (imageBase64) {
       userContent = [
         { type: 'image', source: { type: 'base64', media_type: imageMediaType || 'image/jpeg', data: imageBase64 } },
