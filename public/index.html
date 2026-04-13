@@ -254,6 +254,7 @@
   fileInput.addEventListener('change', e => { if(e.target.files[0]) loadImg(e.target.files[0]); });
 
   function loadImg(file) {
+    window._imageMediaType = file.type || 'image/jpeg';
     const r = new FileReader();
     r.onload = ev => {
       imageBase64 = ev.target.result.split(',')[1];
