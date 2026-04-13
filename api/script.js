@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const { recipeText, imageBase64, style, lang, hostName } = req.body;
+    const { recipeText, imageBase64, imageMediaType, style, lang, hostName } = req.body;
 
     const langName = { es: 'español rioplatense', en: 'inglés', pt: 'portugués brasileño' }[lang] || 'español';
     const hostLine = hostName ? `Tu nombre es ${hostName}.` : '';
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     let userContent;
     if (imageBase64) {
       userContent = [
-        { type: 'image', source: { type: 'base64', media_type: file.type || 'image/jpeg', data: imageBase64 } },
+        { type: 'image', source: { type: 'base64', media_type: imageMediaType || 'image/jpeg', data: imageBase64 } },
         { type: 'text', text: recipeText ? `Receta en imagen. Adicional: ${recipeText}. Generá el script.` : 'Esta es la receta. Generá el script de podcast.' }
       ];
     } else {
