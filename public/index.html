@@ -282,6 +282,7 @@
         body: JSON.stringify({
           recipeText: text,
           imageBase64,
+          imageMediaType: imageBase64 ? (window._imageMediaType || 'image/jpeg') : null,
           style: document.getElementById('styleSelect').value,
           lang: document.getElementById('langSelect').value,
           hostName: 'Agustín'
