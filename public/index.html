@@ -16,82 +16,82 @@
     --radius: 10px; --radius-sm: 6px;
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-
-  /* LOGIN REMOVIDO */
-
-  /* APP */
-  .app { max-width: 680px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; display: block; }
+  .app { max-width: 680px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
   .header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border); }
   .logo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; }
   .logo em { font-style: italic; color: var(--accent); }
   .logo-sub { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
-  .client-badge { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent); border: 0.5px solid var(--accent2); border-radius: 20px; padding: 4px 12px; }
-
+  .version-badge { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text3); border: 0.5px solid var(--border2); border-radius: 20px; padding: 4px 12px; }
   .tabs { display: flex; border-bottom: 0.5px solid var(--border); margin-bottom: 2rem; }
   .tab { padding: 10px 18px; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; background: none; border: none; color: var(--text3); border-bottom: 2px solid transparent; margin-bottom: -0.5px; transition: color 0.15s; }
   .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
   .tab:hover:not(.active) { color: var(--text2); }
   .panel { display: none; }
   .panel.active { display: block; }
-
-  .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 500; margin-bottom: 8px; }
-  input[type="text"], input[type="password"], textarea, select { width: 100%; background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; font-family: 'DM Sans', sans-serif; color: var(--text); margin-bottom: 1.2rem; transition: border-color 0.15s; appearance: none; }
-  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--border2); }
-  input::placeholder, textarea::placeholder { color: var(--text3); }
+  .field-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 500; margin-bottom: 8px; }
+  textarea, select {
+    width: 100%; background: var(--bg2); border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px;
+    font-family: 'DM Sans', sans-serif; color: var(--text); margin-bottom: 1.2rem;
+    transition: border-color 0.15s; appearance: none;
+  }
+  textarea:focus, select:focus { outline: none; border-color: var(--border2); }
+  textarea::placeholder { color: var(--text3); }
   textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
   select option { background: #222; }
-
-  .drop-zone { border: 0.5px dashed var(--border2); border-radius: var(--radius); padding: 1.5rem; text-align: center; cursor: pointer; background: var(--bg2); margin-bottom: 1rem; transition: border-color 0.2s, background 0.2s; }
+  .drop-zone {
+    border: 0.5px dashed var(--border2); border-radius: var(--radius);
+    padding: 1.5rem; text-align: center; cursor: pointer;
+    background: var(--bg2); margin-bottom: 1rem;
+    transition: border-color 0.2s, background 0.2s;
+    display: block;
+  }
   .drop-zone:hover { border-color: var(--accent2); background: var(--bg3); }
   .drop-zone.drag-over { border-color: var(--accent); background: var(--bg3); }
-  .drop-zone p { font-size: 13px; color: var(--text2); }
+  .drop-zone p { font-size: 13px; color: var(--text2); pointer-events: none; }
   .drop-zone strong { color: var(--text); }
   .img-preview { max-width: 100%; max-height: 120px; border-radius: var(--radius-sm); margin-bottom: 10px; display: none; border: 0.5px solid var(--border); }
-  input[type="file"] { display: none; }
-
-  .row { display: flex; gap: 8px; align-items: flex-start; }
-  .row input, .row select { margin-bottom: 0; }
+  .row { display: flex; gap: 8px; margin-bottom: 1rem; }
+  .row select { margin-bottom: 0; }
   .grow { flex: 1; }
-
-  .btn-primary { padding: 10px 22px; background: var(--accent); color: #0e0e0e; border: none; border-radius: var(--radius-sm); font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: opacity 0.15s, transform 0.1s; white-space: nowrap; }
+  .btn-primary { padding: 10px 22px; background: var(--accent); color: #0e0e0e; border: none; border-radius: var(--radius-sm); font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: opacity 0.15s; white-space: nowrap; width: 100%; margin-bottom: 0; }
   .btn-primary:hover { opacity: 0.88; }
-  .btn-primary:active { transform: scale(0.98); }
   .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
   .btn-sec { padding: 10px 18px; background: transparent; color: var(--text); border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
   .btn-sec:hover { background: var(--bg3); }
-  .btn-sec:disabled { opacity: 0.3; cursor: not-allowed; }
-
   .status { font-size: 12px; font-family: 'DM Mono', monospace; padding: 10px 14px; border-radius: var(--radius-sm); margin: 1rem 0; display: none; line-height: 1.6; background: var(--bg3); border: 0.5px solid var(--border); color: var(--text2); }
   .status.ok { color: var(--success); border-color: rgba(76,175,125,0.3); background: rgba(76,175,125,0.06); }
   .status.err { color: var(--error); border-color: rgba(224,90,90,0.3); background: rgba(224,90,90,0.06); }
-
-  .script-box { background: var(--bg2); border: 0.5px solid var(--accent2); border-radius: var(--radius); padding: 1.25rem 1.5rem; font-family: 'DM Sans', sans-serif; font-style: normal; font-size: 13px; line-height: 1.8; color: var(--text); width: 100%; resize: vertical; min-height: 160px; margin-bottom: 1.2rem; display: none; cursor: text; }
-
+  .script-textarea {
+    width: 100%; background: var(--bg2); border: 0.5px solid var(--accent2);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.8;
+    color: var(--text); resize: vertical; min-height: 160px;
+    margin-bottom: 1.2rem; display: none;
+    transition: border-color 0.15s;
+  }
+  .script-textarea:focus { outline: none; border-color: var(--border2); }
+  .script-label { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; display: none; }
+  .tts-section { display: none; }
   .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.2rem; }
   .voice-card { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
   .voice-card:hover { background: var(--bg3); }
   .voice-card.selected { border-color: var(--accent); background: var(--bg3); }
   .voice-name { font-size: 13px; font-weight: 500; color: var(--text); }
   .voice-desc { font-size: 11px; color: var(--text3); margin-top: 2px; font-family: 'DM Mono', monospace; }
-
   .audio-block { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; display: none; }
   .audio-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
   .audio-meta { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text3); margin-bottom: 14px; }
   audio { width: 100%; height: 36px; margin-bottom: 14px; border-radius: 4px; filter: invert(1) hue-rotate(180deg); }
   .audio-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-
-  .divider { height: 0.5px; background: var(--border); margin: 1.8rem 0; }
   .steps { list-style: none; }
   .step { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 0.5px solid var(--border); }
   .step:last-child { border-bottom: none; }
-  .step-num { width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text3); flex-shrink: 0; margin-top: 1px; transition: background 0.15s, color 0.15s; cursor: pointer; }
+  .step-num { width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text3); flex-shrink: 0; margin-top: 1px; cursor: pointer; transition: background 0.15s, color 0.15s; }
   .step.done .step-num { background: var(--accent); color: #0e0e0e; border-color: var(--accent); }
-  .step-info { flex: 1; }
   .step-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
   .step-desc { font-size: 12px; color: var(--text2); line-height: 1.55; }
   .step-link { color: var(--accent); text-decoration: none; }
-  .step-link:hover { text-decoration: underline; }
-
   .lib-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
   .lib-title { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 500; }
   .ep-count { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
@@ -105,70 +105,68 @@
   .ep-btn:hover { background: var(--bg3); }
   .empty { text-align: center; padding: 2.5rem; font-size: 13px; color: var(--text3); }
   .char-count { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text3); text-align: right; margin-top: -14px; margin-bottom: 1rem; }
-  .section { margin-bottom: 1.5rem; }
-  .tts-section { display: none; }
 </style>
 </head>
 <body>
-
-<!-- APP -->
-<div class="app" id="appScreen">
+<div class="app">
   <div class="header">
     <div>
       <div class="logo">Receta<em>Cast</em></div>
-      <div class="logo-sub">IA · Audio · Spotify</div>
+      <div class="logo-sub">IA · Audio · Gastronomía</div>
     </div>
-    
+    <div class="version-badge">producción</div>
   </div>
 
   <div class="tabs">
     <button class="tab active" onclick="switchTab('create')">Crear episodio</button>
-    <button class="tab" onclick="switchTab('publish')">Publicar en Spotify</button>
+    <button class="tab" onclick="switchTab('publish')">Publicar</button>
     <button class="tab" onclick="switchTab('library')">Biblioteca</button>
   </div>
 
+  <!-- CREAR -->
   <div class="panel active" id="tab-create">
-    <div class="section">
-      <div class="label">Receta — imagen o texto</div>
-      <label for="fileInput" class="drop-zone" id="dropZone">
-        <p><strong>📷 Subí una foto de la receta</strong> — arrastrá o hacé click</p>
-        <p style="margin-top:4px;font-size:11px;">JPG, PNG, foto de carta o libreta</p>
-      </label>
-      <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="handleFileChange(event)">
-      <img class="img-preview" id="imgPreview">
-      <textarea id="recipeText" placeholder="O escribí la receta acá — nombre, ingredientes, pasos..." oninput="updateCharCount()"></textarea>
-      <div class="char-count" id="charCount">0 caracteres</div>
+
+    <div class="field-label">Receta — imagen o texto</div>
+
+    <!-- FILE INPUT NATIVO -->
+    <input type="file" id="fileInput" accept="image/*" style="display:none">
+    <label for="fileInput" class="drop-zone" id="dropZone">
+      <p id="dropText"><strong>📷 Subí una foto de la receta</strong> — hacé click aquí</p>
+    </label>
+    <img class="img-preview" id="imgPreview">
+
+    <textarea id="recipeText" placeholder="O escribí la receta acá — nombre, ingredientes, pasos..." oninput="updateCharCount()"></textarea>
+    <div class="char-count" id="charCount">0 caracteres</div>
+
+    <div class="row">
+      <select id="styleSelect" class="grow">
+        <option value="podcast">🎙 Podcast conversacional</option>
+        <option value="tecnico">📖 Didáctico — academia</option>
+        <option value="historia">📻 Historia + receta</option>
+        <option value="asmr">🤫 Sensorial / ASMR</option>
+      </select>
+      <select id="langSelect" style="max-width:130px;margin-bottom:0;">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+        <option value="pt">Português</option>
+      </select>
     </div>
 
-    <div class="section">
-      <div class="row">
-        <select id="styleSelect" class="grow">
-          <option value="podcast">🎙 Podcast conversacional</option>
-          <option value="tecnico">📖 Didáctico — academia</option>
-          <option value="historia">📻 Historia + receta</option>
-          <option value="asmr">🤫 Sensorial / ASMR</option>
-        </select>
-        <select id="langSelect" style="max-width:130px;">
-          <option value="es">Español</option>
-          <option value="en">English</option>
-          <option value="pt">Português</option>
-        </select>
-      </div>
-    </div>
-
-    <button class="btn-primary" id="genScriptBtn" onclick="generateScript()" style="width:100%;margin-bottom:0;">1 — Generar script con IA →</button>
+    <button class="btn-primary" id="genScriptBtn" onclick="generateScript()">1 — Generar script con IA →</button>
     <div class="status" id="scriptStatus"></div>
-    <textarea class="script-box" id="scriptBox" rows="8" placeholder="El script aparecerá aquí — podés editarlo antes de generar el audio..."></textarea>
+
+    <div class="script-label" id="scriptLabel">✏ Script — editá antes de generar el audio</div>
+    <textarea class="script-textarea" id="scriptBox" placeholder="El script aparecerá aquí. Podés editarlo antes de generar el audio."></textarea>
 
     <div class="tts-section" id="ttsSection">
-      <div class="label">Voz</div>
+      <div class="field-label">Voz</div>
       <div class="voice-grid">
         <div class="voice-card selected" onclick="selectVoice(this,'pNInz6obpgDQGcFmaJgB')"><div class="voice-name">Adam</div><div class="voice-desc">Masculino · neutro</div></div>
         <div class="voice-card" onclick="selectVoice(this,'EXAVITQu4vr4xnSDxMaL')"><div class="voice-name">Bella</div><div class="voice-desc">Femenino · cálido</div></div>
         <div class="voice-card" onclick="selectVoice(this,'VR6AewLTigWG4xSOukaG')"><div class="voice-name">Arnold</div><div class="voice-desc">Masculino · profundo</div></div>
         <div class="voice-card" onclick="selectVoice(this,'ThT5KcBeYPX3keUQqHPh')"><div class="voice-name">Dorothy</div><div class="voice-desc">Femenino · dinámico</div></div>
       </div>
-      <button class="btn-primary" id="genAudioBtn" onclick="generateAudio()" style="width:100%;">2 — Generar audio →</button>
+      <button class="btn-primary" id="genAudioBtn" onclick="generateAudio()">2 — Generar audio →</button>
       <div class="status" id="audioStatus"></div>
     </div>
 
@@ -177,23 +175,24 @@
       <div class="audio-meta" id="audioMeta"></div>
       <audio id="audioPlayer" controls></audio>
       <div class="audio-btns">
-        <button class="btn-primary" onclick="downloadAudio()">↓ Descargar MP3</button>
+        <button class="btn-primary" style="width:auto;" onclick="downloadAudio()">↓ Descargar MP3</button>
         <button class="btn-sec" onclick="saveEpisode()">+ Guardar</button>
-        <button class="btn-sec" onclick="switchTab('publish')">Publicar →</button>
       </div>
     </div>
   </div>
 
+  <!-- PUBLICAR -->
   <div class="panel" id="tab-publish">
     <p style="font-size:13px;color:var(--text2);margin-bottom:1.5rem;line-height:1.7;">Seguí estos pasos para publicar en Spotify for Podcasters.</p>
     <ul class="steps">
-      <li class="step" id="step1"><div class="step-num" onclick="markStep(1)">1</div><div class="step-info"><div class="step-title">Creá tu cuenta en Spotify for Podcasters</div><div class="step-desc">Entrá a <a href="https://podcasters.spotify.com" target="_blank" class="step-link">podcasters.spotify.com</a> y registrate. Gratuito con hosting ilimitado.</div></div></li>
-      <li class="step" id="step2"><div class="step-num" onclick="markStep(2)">2</div><div class="step-info"><div class="step-title">Creá tu podcast</div><div class="step-desc">Categoría: Food o Education. Portada 3000×3000px.</div></div></li>
-      <li class="step" id="step3"><div class="step-num" onclick="markStep(3)">3</div><div class="step-info"><div class="step-title">Subí el MP3</div><div class="step-desc">New episode → subí el MP3 → título = nombre de la receta.</div></div></li>
-      <li class="step" id="step4"><div class="step-num" onclick="markStep(4)">4</div><div class="step-info"><div class="step-title">Publicá</div><div class="step-desc">Spotify indexa en menos de 24hs.</div></div></li>
+      <li class="step" id="step1"><div class="step-num" onclick="markStep(1)">1</div><div><div class="step-title">Creá tu cuenta en Spotify for Podcasters</div><div class="step-desc">Entrá a <a href="https://podcasters.spotify.com" target="_blank" class="step-link">podcasters.spotify.com</a></div></div></li>
+      <li class="step" id="step2"><div class="step-num" onclick="markStep(2)">2</div><div><div class="step-title">Creá tu podcast</div><div class="step-desc">Categoría: Food o Education. Portada 3000×3000px.</div></div></li>
+      <li class="step" id="step3"><div class="step-num" onclick="markStep(3)">3</div><div><div class="step-title">Subí el MP3</div><div class="step-desc">New episode → subí el MP3 → título = nombre de la receta.</div></div></li>
+      <li class="step" id="step4"><div class="step-num" onclick="markStep(4)">4</div><div><div class="step-title">Publicá</div><div class="step-desc">Spotify indexa en menos de 24hs.</div></div></li>
     </ul>
   </div>
 
+  <!-- BIBLIOTECA -->
   <div class="panel" id="tab-library">
     <div class="lib-header">
       <div class="lib-title">Episodios guardados</div>
@@ -208,22 +207,66 @@
   let currentAudioBlob = null;
   let selectedVoiceId = 'pNInz6obpgDQGcFmaJgB';
   let imageBase64 = null;
-  let currentClient = 'recetacast';
+  let imageMediaType = 'image/jpeg';
   let episodes = [];
-  try { episodes = JSON.parse(localStorage.getItem('rc_eps_recetacast') || '[]'); } catch(e) {}
-  renderLibrary();
+  try { episodes = JSON.parse(localStorage.getItem('rc_eps') || '[]'); } catch(e) {}
+
+  // ===== FILE UPLOAD =====
+  var fileInput = document.getElementById('fileInput');
+  var dropZone = document.getElementById('dropZone');
+
+  fileInput.addEventListener('change', function() {
+    var file = this.files[0];
+    if (file) loadImg(file);
+  });
+
+  dropZone.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.classList.add('drag-over');
+  });
+
+  dropZone.addEventListener('dragleave', function(e) {
+    e.preventDefault();
+    this.classList.remove('drag-over');
+  });
+
+  dropZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.classList.remove('drag-over');
+    var file = e.dataTransfer.files[0];
+    if (file) loadImg(file);
+  });
+
+  function loadImg(file) {
+    imageMediaType = file.type || 'image/jpeg';
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      imageBase64 = ev.target.result.split(',')[1];
+      var preview = document.getElementById('imgPreview');
+      preview.src = ev.target.result;
+      preview.style.display = 'block';
+      document.getElementById('dropText').innerHTML = '<strong>' + file.name + '</strong> cargada ✓';
+    };
+    reader.readAsDataURL(file);
   }
 
+  // ===== UTILS =====
   function switchTab(tab) {
-    const tabs = ['create','publish','library'];
-    document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', tabs[i] === tab));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    var tabs = ['create','publish','library'];
+    document.querySelectorAll('.tab').forEach(function(t, i) {
+      t.classList.toggle('active', tabs[i] === tab);
+    });
+    document.querySelectorAll('.panel').forEach(function(p) {
+      p.classList.remove('active');
+    });
     document.getElementById('tab-' + tab).classList.add('active');
     if (tab === 'library') renderLibrary();
   }
 
-  function setStatus(id, msg, type='') {
-    const el = document.getElementById(id);
+  function setStatus(id, msg, type) {
+    var el = document.getElementById(id);
     el.style.display = msg ? 'block' : 'none';
     el.textContent = msg;
     el.className = 'status' + (type ? ' ' + type : '');
@@ -234,56 +277,61 @@
   }
 
   function selectVoice(el, id) {
-    document.querySelectorAll('.voice-card').forEach(c => c.classList.remove('selected'));
+    document.querySelectorAll('.voice-card').forEach(function(c) { c.classList.remove('selected'); });
     el.classList.add('selected');
     selectedVoiceId = id;
   }
 
-  const dropZone = document.getElementById('dropZone');
-  const fileInput = document.getElementById('fileInput');
-  
-  function handleFileChange(e) {
-    if (e.target.files && e.target.files[0]) loadImg(e.target.files[0]);
-  }
-  
-  dropZone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropZone.classList.add('drag-over'); });
-  dropZone.addEventListener('dragleave', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); });
-  dropZone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropZone.classList.remove('drag-over'); if(e.dataTransfer.files[0]) loadImg(e.dataTransfer.files[0]); });
-
-  function loadImg(file) {
-    window._imageMediaType = file.type || 'image/jpeg';
-    const r = new FileReader();
-    r.onload = ev => {
-      imageBase64 = ev.target.result.split(',')[1];
-      document.getElementById('imgPreview').src = ev.target.result;
-      document.getElementById('imgPreview').style.display = 'block';
-      dropZone.querySelector('p').innerHTML = '<strong>' + file.name + '</strong> cargada ✓';
-    };
-    r.readAsDataURL(file);
-  }
-
+  // ===== GENERATE SCRIPT =====
   async function generateScript() {
-    const text = document.getElementById('recipeText').value.trim();
-    if (!text && !imageBase64) { setStatus('scriptStatus', '⚠ Escribí una receta o subí una imagen.', 'err'); return; }
-    const btn = document.getElementById('genScriptBtn');
+    var text = document.getElementById('recipeText').value.trim();
+    if (!text && !imageBase64) {
+      setStatus('scriptStatus', '⚠ Escribí una receta o subí una imagen.', 'err');
+      return;
+    }
+    var btn = document.getElementById('genScriptBtn');
     btn.disabled = true;
     setStatus('scriptStatus', '⏳ Generando script con IA...');
     document.getElementById('scriptBox').style.display = 'none';
+    document.getElementById('scriptLabel').style.display = 'none';
     document.getElementById('ttsSection').style.display = 'none';
     document.getElementById('audioBlock').style.display = 'none';
+
     try {
-      const res = await fetch('/api/script', {
+      var userContent;
+      if (imageBase64) {
+        userContent = [
+          { type: 'image', source: { type: 'base64', media_type: imageMediaType, data: imageBase64 } },
+          { type: 'text', text: text ? 'Receta en imagen. Adicional: ' + text + '. Generá el script.' : 'Esta es la receta. Generá el script.' }
+        ];
+      } else {
+        userContent = 'Receta: ' + text + '\n\nGenerá el script.';
+      }
+
+      var res = await fetch('/api/script', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ recipeText: text, imageBase64, imageMediaType: imageBase64 ? (window._imageMediaType || 'image/jpeg') : null, style: document.getElementById('styleSelect').value, lang: document.getElementById('langSelect').value, hostName: '' })
+        body: JSON.stringify({
+          recipeText: text,
+          imageBase64: imageBase64,
+          imageMediaType: imageMediaType,
+          style: document.getElementById('styleSelect').value,
+          lang: document.getElementById('langSelect').value,
+          hostName: ''
+        })
       });
-      const data = await res.json();
+
+      var data = await res.json();
       if (data.error) throw new Error(data.error);
+
       currentScript = data.script;
-      document.getElementById('scriptBox').style.display = 'block';
-      document.getElementById('scriptBox').value = currentScript;
+      var scriptBox = document.getElementById('scriptBox');
+      scriptBox.value = currentScript;
+      scriptBox.style.display = 'block';
+      document.getElementById('scriptLabel').style.display = 'block';
       document.getElementById('ttsSection').style.display = 'block';
-      setStatus('scriptStatus', '✓ Script listo — ' + currentScript.split(' ').length + ' palabras', 'ok');
+      setStatus('scriptStatus', '✓ Script listo — ' + currentScript.split(' ').length + ' palabras. Editá si necesitás.', 'ok');
+
     } catch(err) {
       setStatus('scriptStatus', '✗ ' + err.message, 'err');
     } finally {
@@ -291,22 +339,36 @@
     }
   }
 
+  // ===== GENERATE AUDIO =====
   async function generateAudio() {
-    if (!currentScript && !document.getElementById('scriptBox').value) { setStatus('audioStatus', '⚠ Primero generá el script.', 'err'); return; }
-    const btn = document.getElementById('genAudioBtn');
+    var scriptBox = document.getElementById('scriptBox');
+    var textToUse = scriptBox.value.trim();
+    if (!textToUse) {
+      setStatus('audioStatus', '⚠ Primero generá el script.', 'err');
+      return;
+    }
+    var btn = document.getElementById('genAudioBtn');
     btn.disabled = true;
     setStatus('audioStatus', '⏳ Generando audio...');
+
     try {
-      const res = await fetch('/api/audio', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: document.getElementById('scriptBox').value || currentScript, voiceId: selectedVoiceId }) });
-      if (!res.ok) { const err = await res.json().catch(() => ({})); throw new Error(err.error || 'Error ' + res.status); }
+      var res = await fetch('/api/audio', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: textToUse, voiceId: selectedVoiceId })
+      });
+      if (!res.ok) {
+        var err = await res.json().catch(function() { return {}; });
+        throw new Error(err.error || 'Error ' + res.status);
+      }
       currentAudioBlob = await res.blob();
-      const url = URL.createObjectURL(currentAudioBlob);
+      var url = URL.createObjectURL(currentAudioBlob);
       document.getElementById('audioPlayer').src = url;
-      const title = document.getElementById('recipeText').value.split('\n')[0].slice(0,40) || 'Receta';
+      var title = document.getElementById('recipeText').value.split('\n')[0].slice(0,40) || 'Receta';
       document.getElementById('audioTitle').textContent = title;
-      document.getElementById('audioMeta').textContent = Math.round(currentAudioBlob.size / 1024) + ' KB · MP3 · listo para Spotify';
+      document.getElementById('audioMeta').textContent = Math.round(currentAudioBlob.size / 1024) + ' KB · MP3';
       document.getElementById('audioBlock').style.display = 'block';
-      setStatus('audioStatus', '✓ Audio generado. Descargalo y subilo a Spotify.', 'ok');
+      setStatus('audioStatus', '✓ Audio listo. Descargalo.', 'ok');
     } catch(err) {
       setStatus('audioStatus', '✗ ' + err.message, 'err');
     } finally {
@@ -316,35 +378,58 @@
 
   function downloadAudio() {
     if (!currentAudioBlob) return;
-    const title = (document.getElementById('recipeText').value.split('\n')[0].slice(0,40) || 'episodio').replace(/[^a-z0-9]/gi, '_').toLowerCase();
-    const url = URL.createObjectURL(currentAudioBlob);
-    const a = document.createElement('a'); a.href = url; a.download = title + '.mp3'; a.click();
+    var title = (document.getElementById('recipeText').value.split('\n')[0].slice(0,40) || 'episodio').replace(/[^a-z0-9]/gi, '_').toLowerCase();
+    var url = URL.createObjectURL(currentAudioBlob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = title + '.mp3';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
     URL.revokeObjectURL(url);
   }
 
   function saveEpisode() {
-    if (!currentScript && !document.getElementById('scriptBox').value) return;
-    const title = document.getElementById('recipeText').value.split('\n')[0].slice(0,40) || 'Receta sin título';
-    const styleNames = { podcast: 'Podcast', tecnico: 'Técnico', historia: 'Historia', asmr: 'ASMR' };
-    episodes.unshift({ id: Date.now(), title, style: styleNames[document.getElementById('styleSelect').value], lang: document.getElementById('langSelect').value.toUpperCase(), script: currentScript, hasAudio: !!currentAudioBlob, date: new Date().toLocaleDateString('es-AR', { day: '2-digit', month: 'short' }), words: currentScript.split(' ').length });
-    localStorage.setItem('rc_eps_' + currentClient, JSON.stringify(episodes));
+    var script = document.getElementById('scriptBox').value.trim();
+    if (!script) return;
+    var title = document.getElementById('recipeText').value.split('\n')[0].slice(0,40) || 'Receta sin título';
+    var styleNames = { podcast: 'Podcast', tecnico: 'Técnico', historia: 'Historia', asmr: 'ASMR' };
+    episodes.unshift({
+      id: Date.now(), title: title,
+      style: styleNames[document.getElementById('styleSelect').value],
+      lang: document.getElementById('langSelect').value.toUpperCase(),
+      script: script,
+      hasAudio: !!currentAudioBlob,
+      date: new Date().toLocaleDateString('es-AR', { day: '2-digit', month: 'short' }),
+      words: script.split(' ').length
+    });
+    localStorage.setItem('rc_eps', JSON.stringify(episodes));
     setStatus('audioStatus', '✓ Guardado en biblioteca.', 'ok');
     renderLibrary();
   }
 
   function renderLibrary() {
     document.getElementById('epCount').textContent = episodes.length + ' episodio' + (episodes.length !== 1 ? 's' : '');
-    const list = document.getElementById('episodeList');
-    if (!episodes.length) { list.innerHTML = '<div class="empty">Todavía no hay episodios guardados.</div>'; return; }
-    list.innerHTML = episodes.map((ep, i) => `<div class="episode"><div class="ep-num">${String(episodes.length - i).padStart(2,'0')}</div><div class="ep-info"><div class="ep-title">${ep.title}</div><div class="ep-meta">${ep.style} · ${ep.lang} · ${ep.date}${ep.hasAudio ? ' · 🎵' : ''}</div></div><button class="ep-btn" onclick="copyScript(${ep.id})">⎘</button></div>`).join('');
+    var list = document.getElementById('episodeList');
+    if (!episodes.length) {
+      list.innerHTML = '<div class="empty">Todavía no hay episodios guardados.</div>';
+      return;
+    }
+    list.innerHTML = episodes.map(function(ep, i) {
+      return '<div class="episode"><div class="ep-num">' + String(episodes.length - i).padStart(2,'0') + '</div><div class="ep-info"><div class="ep-title">' + ep.title + '</div><div class="ep-meta">' + ep.style + ' · ' + ep.lang + ' · ' + ep.date + (ep.hasAudio ? ' · 🎵' : '') + '</div></div><button class="ep-btn" onclick="copyScript(' + ep.id + ')">⎘</button></div>';
+    }).join('');
   }
 
   function copyScript(id) {
-    const ep = episodes.find(e => e.id === id);
-    if (ep) navigator.clipboard.writeText(ep.script).then(() => alert('Script copiado ✓'));
+    var ep = episodes.find(function(e) { return e.id === id; });
+    if (ep) navigator.clipboard.writeText(ep.script).then(function() { alert('Script copiado ✓'); });
   }
 
-  function markStep(n) { document.getElementById('step' + n).classList.toggle('done'); }
+  function markStep(n) {
+    document.getElementById('step' + n).classList.toggle('done');
+  }
+
+  renderLibrary();
 </script>
 </body>
 </html>
