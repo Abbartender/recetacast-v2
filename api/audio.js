@@ -9,31 +9,30 @@ export default async function handler(req, res) {
     const { text, voiceId } = req.body;
     if (!text) return res.status(400).json({ error: 'Texto requerido' });
 
-    const voiceMap = {
-      'pNInz6obpgDQGcFmaJgB': 'onyx',
-      'EXAVITQu4vr4xnSDxMaL': 'nova',
-      'VR6AewLTigWG4xSOukaG': 'fable',
-      'ThT5KcBeYPX3keUQqHPh': 'shimmer'
-    };
+    // voiceId viene del frontend — si no llega, usa la voz clonada por defecto
+    const voice = voiceId || process.env.ELEVENLABS_VOICE_ID;
 
-    const voice = voiceMap[voiceId] || 'onyx';
-
-    const response = await fetch('https://api.openai.com/v1/audio/speech', {
+    const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+        'xi-api-key': process.env.ELEVENLABS_API_KEY
       },
       body: JSON.stringify({
-        model: 'tts-1',
-        input: text,
-        voice: voice
+        text: text,
+        model_id: 'eleven_multilingual_v2',
+        voice_settings: {
+          stability: 0.5,
+          similarity_boost: 0.85,
+          style: 0.2,
+          use_speaker_boost: true
+        }
       })
     });
 
     if (!response.ok) {
       const err = await response.json().catch(() => ({}));
-      return res.status(response.status).json({ error: err.error?.message || 'Error OpenAI TTS ' + response.status });
+      return res.status(response.status).json({ error: err.detail?.message || 'Error ElevenLabs ' + response.status });
     }
 
     const audioBuffer = await response.arrayBuffer();
