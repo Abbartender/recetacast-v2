@@ -130,11 +130,11 @@
   <div class="panel active" id="tab-create">
     <div class="section">
       <div class="label">Receta — imagen o texto</div>
-      <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+      <label for="fileInput" class="drop-zone" id="dropZone">
         <p><strong>📷 Subí una foto de la receta</strong> — arrastrá o hacé click</p>
         <p style="margin-top:4px;font-size:11px;">JPG, PNG, foto de carta o libreta</p>
-        <input type="file" id="fileInput" accept="image/*">
-      </div>
+      </label>
+      <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="handleFileChange(event)">
       <img class="img-preview" id="imgPreview">
       <textarea id="recipeText" placeholder="O escribí la receta acá — nombre, ingredientes, pasos..." oninput="updateCharCount()"></textarea>
       <div class="char-count" id="charCount">0 caracteres</div>
@@ -241,10 +241,14 @@
 
   const dropZone = document.getElementById('dropZone');
   const fileInput = document.getElementById('fileInput');
-  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
-  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
-  dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); if(e.dataTransfer.files[0]) loadImg(e.dataTransfer.files[0]); });
-  fileInput.addEventListener('change', e => { if(e.target.files[0]) loadImg(e.target.files[0]); });
+  
+  function handleFileChange(e) {
+    if (e.target.files && e.target.files[0]) loadImg(e.target.files[0]);
+  }
+  
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); e.stopPropagation(); dropZone.classList.add('drag-over'); });
+  dropZone.addEventListener('dragleave', e => { e.preventDefault(); dropZone.classList.remove('drag-over'); });
+  dropZone.addEventListener('drop', e => { e.preventDefault(); e.stopPropagation(); dropZone.classList.remove('drag-over'); if(e.dataTransfer.files[0]) loadImg(e.dataTransfer.files[0]); });
 
   function loadImg(file) {
     window._imageMediaType = file.type || 'image/jpeg';
