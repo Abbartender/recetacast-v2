@@ -7,14 +7,19 @@ export default async function handler(req, res) {
 
   try {
     const { recipeText, imageBase64, imageMediaType, style, lang, hostName } = req.body;
-
     const langName = { es: 'español rioplatense', en: 'inglés', pt: 'portugués brasileño' }[lang] || 'español';
-    const hostLine = hostName: ''
+    const hostLine = hostName ? `Tu nombre es ${hostName}.` : '';
+
     const styles = {
-podcast: `Narrá la receta en ${langName} de forma conversacional y natural. IMPORTANTE: usá ÚNICAMENTE los ingredientes, proporciones y técnica exacta que están en la receta. No agregues variaciones, historia ni proporciones distintas a las indicadas. Respetá exactamente lo que dice la receta.`,      historia: `Empezá con el origen histórico y cultural en ${langName}. ${hostLine} Contexto, época, curiosidades. Luego transicioná a la receta completa.`,
-      asmr: `Describí la receta de forma lenta y sensorial en ${langName}. ${hostLine} Texturas, aromas, sonidos, temperatura. Frases largas y pausadas.`
+      podcast: `Narrá la receta en ${langName} de forma conversacional y natural. IMPORTANTE: usá ÚNICAMENTE los ingredientes, proporciones y técnica exacta que están en la receta. No agregues variaciones, historia ni proporciones distintas a las indicadas. Respetá exactamente lo que dice la receta.`,
+      tecnico: `Sos instructor/a de una academia de bartending profesional. ${hostLine} Explicá la receta en ${langName} con precisión técnica: técnicas, proporciones, temperatura, dilución, garnish. Cada término se explica brevemente. Usá SOLO lo que dice la receta.`,
+      historia: `Empezá con el origen histórico y cultural en ${langName}. ${hostLine} Contexto, época, curiosidades. Luego transicioná a la receta completa usando SOLO los ingredientes indicados.`,
+      asmr: `Describí la receta de forma lenta y sensorial en ${langName}. ${hostLine} Texturas, aromas, sonidos, temperatura. Frases largas y pausadas. Usá SOLO lo que dice la receta.`
     };
-const systemPrompt = `Respondé ÚNICAMENTE con el script de audio listo para leer en voz alta, en ${langName}. Sin títulos, sin markdown, sin corchetes. Solo texto continuo narrado. Máximo 100 palabras. Usá SOLO la información de la receta proporcionada, sin agregar historia, metáforas ni contexto extra. Presentá los ingredientes y pasos de forma directa y clara. ${styles[style] || styles.podcast}`;    let userContent;
+
+    const systemPrompt = `Respondé ÚNICAMENTE con el script de audio listo para leer en voz alta, en ${langName}. Sin títulos, sin markdown, sin corchetes. Solo texto continuo narrado. Máximo 100 palabras. Usá SOLO la información de la receta proporcionada, sin agregar historia, metáforas ni contexto extra. Presentá los ingredientes y pasos de forma directa y clara. ${styles[style] || styles.podcast}`;
+
+    let userContent;
     if (imageBase64) {
       userContent = [
         { type: 'image', source: { type: 'base64', media_type: imageMediaType || 'image/jpeg', data: imageBase64 } },
