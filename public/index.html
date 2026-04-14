@@ -16,13 +16,29 @@
     --radius: 10px; --radius-sm: 6px;
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-  .app { max-width: 680px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
 
+  /* LOGIN */
+  .login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .login-box { width: 100%; max-width: 360px; background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 2.5rem 2rem; }
+  .login-logo { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; margin-bottom: 4px; }
+  .login-logo em { font-style: italic; color: var(--accent); }
+  .login-sub { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem; }
+  .login-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 500; margin-bottom: 6px; display: block; }
+  .login-input { width: 100%; background: var(--bg3); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; font-family: 'DM Sans', sans-serif; color: var(--text); margin-bottom: 1rem; transition: border-color 0.15s; }
+  .login-input:focus { outline: none; border-color: var(--border2); }
+  .login-input::placeholder { color: var(--text3); }
+  .login-btn { width: 100%; padding: 11px; background: var(--accent); color: #0e0e0e; border: none; border-radius: var(--radius-sm); font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: opacity 0.15s; margin-top: 4px; }
+  .login-btn:hover { opacity: 0.88; }
+  .login-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .login-error { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--error); margin-top: 10px; display: none; }
+
+  /* APP */
+  .app { max-width: 680px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; display: none; }
   .header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 0.5px solid var(--border); }
   .logo { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; }
   .logo em { font-style: italic; color: var(--accent); }
   .logo-sub { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
-  .version-badge { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text3); border: 0.5px solid var(--border2); border-radius: 20px; padding: 4px 12px; }
+  .client-badge { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent); border: 0.5px solid var(--accent2); border-radius: 20px; padding: 4px 12px; }
 
   .tabs { display: flex; border-bottom: 0.5px solid var(--border); margin-bottom: 2rem; }
   .tab { padding: 10px 18px; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; background: none; border: none; color: var(--text3); border-bottom: 2px solid transparent; margin-bottom: -0.5px; transition: color 0.15s; }
@@ -32,13 +48,7 @@
   .panel.active { display: block; }
 
   .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); font-weight: 500; margin-bottom: 8px; }
-
-  input[type="text"], input[type="password"], textarea, select {
-    width: 100%; background: var(--bg2); border: 0.5px solid var(--border);
-    border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px;
-    font-family: 'DM Sans', sans-serif; color: var(--text); margin-bottom: 1.2rem;
-    transition: border-color 0.15s; appearance: none;
-  }
+  input[type="text"], input[type="password"], textarea, select { width: 100%; background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; font-family: 'DM Sans', sans-serif; color: var(--text); margin-bottom: 1.2rem; transition: border-color 0.15s; appearance: none; }
   input:focus, textarea:focus, select:focus { outline: none; border-color: var(--border2); }
   input::placeholder, textarea::placeholder { color: var(--text3); }
   textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
@@ -60,7 +70,6 @@
   .btn-primary:hover { opacity: 0.88; }
   .btn-primary:active { transform: scale(0.98); }
   .btn-primary:disabled { opacity: 0.3; cursor: not-allowed; }
-
   .btn-sec { padding: 10px 18px; background: transparent; color: var(--text); border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
   .btn-sec:hover { background: var(--bg3); }
   .btn-sec:disabled { opacity: 0.3; cursor: not-allowed; }
@@ -69,7 +78,7 @@
   .status.ok { color: var(--success); border-color: rgba(76,175,125,0.3); background: rgba(76,175,125,0.06); }
   .status.err { color: var(--error); border-color: rgba(224,90,90,0.3); background: rgba(224,90,90,0.06); }
 
-  .script-box { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; line-height: 1.85; color: var(--text2); max-height: 180px; overflow-y: auto; margin-bottom: 1.2rem; display: none; }
+  .script-box { background: var(--bg2); border: 0.5px solid var(--accent2); border-radius: var(--radius); padding: 1.25rem 1.5rem; font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; line-height: 1.85; color: var(--text); width: 100%; resize: vertical; min-height: 160px; margin-bottom: 1.2rem; display: none; }
 
   .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.2rem; }
   .voice-card { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
@@ -85,7 +94,6 @@
   .audio-btns { display: flex; gap: 8px; flex-wrap: wrap; }
 
   .divider { height: 0.5px; background: var(--border); margin: 1.8rem 0; }
-
   .steps { list-style: none; }
   .step { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 0.5px solid var(--border); }
   .step:last-child { border-bottom: none; }
@@ -109,21 +117,35 @@
   .ep-btn { width: 30px; height: 30px; background: transparent; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; color: var(--text2); transition: background 0.15s; flex-shrink: 0; }
   .ep-btn:hover { background: var(--bg3); }
   .empty { text-align: center; padding: 2.5rem; font-size: 13px; color: var(--text3); }
-  .hint { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text3); margin-top: -10px; margin-bottom: 1.2rem; line-height: 1.5; }
   .char-count { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text3); text-align: right; margin-top: -14px; margin-bottom: 1rem; }
   .section { margin-bottom: 1.5rem; }
   .tts-section { display: none; }
 </style>
 </head>
 <body>
-<div class="app">
 
+<!-- LOGIN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">Receta<em>Cast</em></div>
+    <div class="login-sub">Sistema de audio training</div>
+    <label class="login-label">Nombre de tu bar / empresa</label>
+    <input type="text" class="login-input" id="loginClient" placeholder="bardelnorte" autocomplete="off">
+    <label class="login-label">Contraseña</label>
+    <input type="password" class="login-input" id="loginPassword" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" id="loginBtn" onclick="doLogin()">Ingresar →</button>
+    <div class="login-error" id="loginError"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="appScreen">
   <div class="header">
     <div>
       <div class="logo">Receta<em>Cast</em></div>
-      <div class="logo-sub">IA · ElevenLabs · Spotify</div>
+      <div class="logo-sub">IA · Audio · Spotify</div>
     </div>
-    <div class="version-badge">web · seguro</div>
+    <div class="client-badge" id="clientBadge"></div>
   </div>
 
   <div class="tabs">
@@ -132,7 +154,6 @@
     <button class="tab" onclick="switchTab('library')">Biblioteca</button>
   </div>
 
-  <!-- CREAR -->
   <div class="panel active" id="tab-create">
     <div class="section">
       <div class="label">Receta — imagen o texto</div>
@@ -164,17 +185,17 @@
 
     <button class="btn-primary" id="genScriptBtn" onclick="generateScript()" style="width:100%;margin-bottom:0;">1 — Generar script con IA →</button>
     <div class="status" id="scriptStatus"></div>
-    <div class="script-box" id="scriptBox"></div>
+    <textarea class="script-box" id="scriptBox" rows="8" placeholder="El script aparecerá aquí — podés editarlo antes de generar el audio..."></textarea>
 
     <div class="tts-section" id="ttsSection">
-      <div class="label">Voz ElevenLabs</div>
+      <div class="label">Voz</div>
       <div class="voice-grid">
         <div class="voice-card selected" onclick="selectVoice(this,'pNInz6obpgDQGcFmaJgB')"><div class="voice-name">Adam</div><div class="voice-desc">Masculino · neutro</div></div>
         <div class="voice-card" onclick="selectVoice(this,'EXAVITQu4vr4xnSDxMaL')"><div class="voice-name">Bella</div><div class="voice-desc">Femenino · cálido</div></div>
         <div class="voice-card" onclick="selectVoice(this,'VR6AewLTigWG4xSOukaG')"><div class="voice-name">Arnold</div><div class="voice-desc">Masculino · profundo</div></div>
         <div class="voice-card" onclick="selectVoice(this,'ThT5KcBeYPX3keUQqHPh')"><div class="voice-name">Dorothy</div><div class="voice-desc">Femenino · dinámico</div></div>
       </div>
-      <button class="btn-primary" id="genAudioBtn" onclick="generateAudio()" style="width:100%;">2 — Generar audio con ElevenLabs →</button>
+      <button class="btn-primary" id="genAudioBtn" onclick="generateAudio()" style="width:100%;">2 — Generar audio →</button>
       <div class="status" id="audioStatus"></div>
     </div>
 
@@ -190,19 +211,16 @@
     </div>
   </div>
 
-  <!-- PUBLICAR -->
   <div class="panel" id="tab-publish">
-    <p style="font-size:13px;color:var(--text2);margin-bottom:1.5rem;line-height:1.7;">Seguí estos pasos para publicar en Spotify for Podcasters. El proceso completo tarda menos de 10 minutos la primera vez.</p>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:1.5rem;line-height:1.7;">Seguí estos pasos para publicar en Spotify for Podcasters.</p>
     <ul class="steps">
       <li class="step" id="step1"><div class="step-num" onclick="markStep(1)">1</div><div class="step-info"><div class="step-title">Creá tu cuenta en Spotify for Podcasters</div><div class="step-desc">Entrá a <a href="https://podcasters.spotify.com" target="_blank" class="step-link">podcasters.spotify.com</a> y registrate. Gratuito con hosting ilimitado.</div></div></li>
-      <li class="step" id="step2"><div class="step-num" onclick="markStep(2)">2</div><div class="step-info"><div class="step-title">Creá tu podcast</div><div class="step-desc">Nombre sugerido: "RecetaCast" o "Bartending en Audio". Categoría: Food o Education. Portada 3000×3000px.</div></div></li>
-      <li class="step" id="step3"><div class="step-num" onclick="markStep(3)">3</div><div class="step-info"><div class="step-title">Subí el MP3 descargado</div><div class="step-desc">New episode → subí el MP3 → título = nombre de la receta → descripción = el script generado.</div></div></li>
-      <li class="step" id="step4"><div class="step-num" onclick="markStep(4)">4</div><div class="step-info"><div class="step-title">Publicá el episodio</div><div class="step-desc">Publicación inmediata o programada. Spotify indexa en menos de 24hs.</div></div></li>
-      <li class="step" id="step5"><div class="step-num" onclick="markStep(5)">5</div><div class="step-info"><div class="step-title">Distribuí a otras plataformas</div><div class="step-desc">Desde Anchor distribuís también a Apple Podcasts, Google Podcasts y Amazon Music con un click.</div></div></li>
+      <li class="step" id="step2"><div class="step-num" onclick="markStep(2)">2</div><div class="step-info"><div class="step-title">Creá tu podcast</div><div class="step-desc">Categoría: Food o Education. Portada 3000×3000px.</div></div></li>
+      <li class="step" id="step3"><div class="step-num" onclick="markStep(3)">3</div><div class="step-info"><div class="step-title">Subí el MP3</div><div class="step-desc">New episode → subí el MP3 → título = nombre de la receta.</div></div></li>
+      <li class="step" id="step4"><div class="step-num" onclick="markStep(4)">4</div><div class="step-info"><div class="step-title">Publicá</div><div class="step-desc">Spotify indexa en menos de 24hs.</div></div></li>
     </ul>
   </div>
 
-  <!-- BIBLIOTECA -->
   <div class="panel" id="tab-library">
     <div class="lib-header">
       <div class="lib-title">Episodios guardados</div>
@@ -210,7 +228,6 @@
     </div>
     <div id="episodeList"><div class="empty">Todavía no hay episodios guardados.</div></div>
   </div>
-
 </div>
 
 <script>
@@ -218,8 +235,64 @@
   let currentAudioBlob = null;
   let selectedVoiceId = 'pNInz6obpgDQGcFmaJgB';
   let imageBase64 = null;
+  let currentClient = '';
   let episodes = [];
-  try { episodes = JSON.parse(localStorage.getItem('rc_eps') || '[]'); } catch(e) {}
+
+  // Verificar sesión guardada
+  const savedClient = sessionStorage.getItem('rc_client');
+  if (savedClient) {
+    currentClient = savedClient;
+    showApp(savedClient);
+  }
+
+  async function doLogin() {
+    const clientId = document.getElementById('loginClient').value.trim().toLowerCase();
+    const password = document.getElementById('loginPassword').value;
+    const btn = document.getElementById('loginBtn');
+    const errEl = document.getElementById('loginError');
+
+    if (!clientId || !password) { showError('Completá los dos campos.'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Verificando...';
+    errEl.style.display = 'none';
+
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clientId, password })
+      });
+      const data = await res.json();
+
+      if (data.valid) {
+        sessionStorage.setItem('rc_client', clientId);
+        currentClient = clientId;
+        showApp(clientId);
+      } else {
+        showError('Cliente o contraseña incorrectos.');
+      }
+    } catch(err) {
+      showError('Error de conexión. Intentá de nuevo.');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Ingresar →';
+    }
+  }
+
+  function showError(msg) {
+    const errEl = document.getElementById('loginError');
+    errEl.textContent = msg;
+    errEl.style.display = 'block';
+  }
+
+  function showApp(clientId) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('appScreen').style.display = 'block';
+    document.getElementById('clientBadge').textContent = clientId;
+    try { episodes = JSON.parse(localStorage.getItem('rc_eps_' + clientId) || '[]'); } catch(e) {}
+    renderLibrary();
+  }
 
   function switchTab(tab) {
     const tabs = ['create','publish','library'];
@@ -268,37 +341,25 @@
   async function generateScript() {
     const text = document.getElementById('recipeText').value.trim();
     if (!text && !imageBase64) { setStatus('scriptStatus', '⚠ Escribí una receta o subí una imagen.', 'err'); return; }
-
     const btn = document.getElementById('genScriptBtn');
     btn.disabled = true;
     setStatus('scriptStatus', '⏳ Generando script con IA...');
     document.getElementById('scriptBox').style.display = 'none';
     document.getElementById('ttsSection').style.display = 'none';
     document.getElementById('audioBlock').style.display = 'none';
-
     try {
       const res = await fetch('/api/script', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          recipeText: text,
-          imageBase64,
-          imageMediaType: imageBase64 ? (window._imageMediaType || 'image/jpeg') : null,
-          style: document.getElementById('styleSelect').value,
-          lang: document.getElementById('langSelect').value,
-          hostName: 'Agustín'
-        })
+        body: JSON.stringify({ recipeText: text, imageBase64, imageMediaType: imageBase64 ? (window._imageMediaType || 'image/jpeg') : null, style: document.getElementById('styleSelect').value, lang: document.getElementById('langSelect').value, hostName: '' })
       });
-
       const data = await res.json();
       if (data.error) throw new Error(data.error);
-
       currentScript = data.script;
       document.getElementById('scriptBox').style.display = 'block';
-      document.getElementById('scriptBox').textContent = currentScript;
+      document.getElementById('scriptBox').value = currentScript;
       document.getElementById('ttsSection').style.display = 'block';
-      setStatus('scriptStatus', '✓ Script listo — ' + currentScript.split(' ').length + ' palabras · ~' + Math.round(currentScript.split(' ').length / 2.5 / 60) + ' min de audio', 'ok');
-
+      setStatus('scriptStatus', '✓ Script listo — ' + currentScript.split(' ').length + ' palabras', 'ok');
     } catch(err) {
       setStatus('scriptStatus', '✗ ' + err.message, 'err');
     } finally {
@@ -307,33 +368,21 @@
   }
 
   async function generateAudio() {
-    if (!currentScript) { setStatus('audioStatus', '⚠ Primero generá el script.', 'err'); return; }
+    if (!currentScript && !document.getElementById('scriptBox').value) { setStatus('audioStatus', '⚠ Primero generá el script.', 'err'); return; }
     const btn = document.getElementById('genAudioBtn');
     btn.disabled = true;
-    setStatus('audioStatus', '⏳ Generando audio con ElevenLabs...');
-
+    setStatus('audioStatus', '⏳ Generando audio...');
     try {
-      const res = await fetch('/api/audio', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: currentScript, voiceId: selectedVoiceId })
-      });
-
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.error || 'Error ' + res.status);
-      }
-
+      const res = await fetch('/api/audio', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: document.getElementById('scriptBox').value || currentScript, voiceId: selectedVoiceId }) });
+      if (!res.ok) { const err = await res.json().catch(() => ({})); throw new Error(err.error || 'Error ' + res.status); }
       currentAudioBlob = await res.blob();
       const url = URL.createObjectURL(currentAudioBlob);
       document.getElementById('audioPlayer').src = url;
-
       const title = document.getElementById('recipeText').value.split('\n')[0].slice(0,40) || 'Receta';
       document.getElementById('audioTitle').textContent = title;
       document.getElementById('audioMeta').textContent = Math.round(currentAudioBlob.size / 1024) + ' KB · MP3 · listo para Spotify';
       document.getElementById('audioBlock').style.display = 'block';
-      setStatus('audioStatus', '✓ Audio generado. Descargalo y subilo a Spotify for Podcasters.', 'ok');
-
+      setStatus('audioStatus', '✓ Audio generado. Descargalo y subilo a Spotify.', 'ok');
     } catch(err) {
       setStatus('audioStatus', '✗ ' + err.message, 'err');
     } finally {
@@ -350,19 +399,20 @@
   }
 
   function saveEpisode() {
-    if (!currentScript) return;
+    if (!currentScript && !document.getElementById('scriptBox').value) return;
     const title = document.getElementById('recipeText').value.split('\n')[0].slice(0,40) || 'Receta sin título';
     const styleNames = { podcast: 'Podcast', tecnico: 'Técnico', historia: 'Historia', asmr: 'ASMR' };
     episodes.unshift({ id: Date.now(), title, style: styleNames[document.getElementById('styleSelect').value], lang: document.getElementById('langSelect').value.toUpperCase(), script: currentScript, hasAudio: !!currentAudioBlob, date: new Date().toLocaleDateString('es-AR', { day: '2-digit', month: 'short' }), words: currentScript.split(' ').length });
-    localStorage.setItem('rc_eps', JSON.stringify(episodes));
+    localStorage.setItem('rc_eps_' + currentClient, JSON.stringify(episodes));
     setStatus('audioStatus', '✓ Guardado en biblioteca.', 'ok');
+    renderLibrary();
   }
 
   function renderLibrary() {
     document.getElementById('epCount').textContent = episodes.length + ' episodio' + (episodes.length !== 1 ? 's' : '');
     const list = document.getElementById('episodeList');
     if (!episodes.length) { list.innerHTML = '<div class="empty">Todavía no hay episodios guardados.</div>'; return; }
-    list.innerHTML = episodes.map((ep, i) => `<div class="episode"><div class="ep-num">${String(episodes.length - i).padStart(2,'0')}</div><div class="ep-info"><div class="ep-title">${ep.title}</div><div class="ep-meta">${ep.style} · ${ep.lang} · ${ep.date} · ~${Math.round(ep.words/2.5/60)}min${ep.hasAudio ? ' · 🎵' : ''}</div></div><button class="ep-btn" onclick="copyScript(${ep.id})">⎘</button></div>`).join('');
+    list.innerHTML = episodes.map((ep, i) => `<div class="episode"><div class="ep-num">${String(episodes.length - i).padStart(2,'0')}</div><div class="ep-info"><div class="ep-title">${ep.title}</div><div class="ep-meta">${ep.style} · ${ep.lang} · ${ep.date}${ep.hasAudio ? ' · 🎵' : ''}</div></div><button class="ep-btn" onclick="copyScript(${ep.id})">⎘</button></div>`).join('');
   }
 
   function copyScript(id) {
@@ -371,8 +421,6 @@
   }
 
   function markStep(n) { document.getElementById('step' + n).classList.toggle('done'); }
-
-  renderLibrary();
 </script>
 </body>
 </html>
