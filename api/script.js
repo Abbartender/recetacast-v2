@@ -9,11 +9,9 @@ export default async function handler(req, res) {
     const { recipeText, imageBase64, imageMediaType, style, lang, hostName } = req.body;
 
     const langName = { es: 'español rioplatense', en: 'inglés', pt: 'portugués brasileño' }[lang] || 'español';
-    const hostLine = hostName ? `Tu nombre es ${hostName}.` : '';
+    const hostLine = hostName: ''
     const styles = {
-      podcast: `Sos conductor/a de un podcast gastronómico íntimo y carismático. ${hostLine} Narrá la receta en ${langName} como si hablaras con alguien detrás de la barra. Introducción atractiva, ingredientes naturales, pasos con ritmo, cierre con tip personal.`,
-      tecnico: `Sos instructor/a de una academia de bartending profesional. ${hostLine} Explicá la receta en ${langName} con precisión técnica: técnicas, proporciones, temperatura, dilución, garnish. Cada término se explica brevemente.`,
-      historia: `Empezá con el origen histórico y cultural en ${langName}. ${hostLine} Contexto, época, curiosidades. Luego transicioná a la receta completa.`,
+podcast: `Narrá la receta en ${langName} de forma conversacional y natural. IMPORTANTE: usá ÚNICAMENTE los ingredientes, proporciones y técnica exacta que están en la receta. No agregues variaciones, historia ni proporciones distintas a las indicadas. Respetá exactamente lo que dice la receta.`,      historia: `Empezá con el origen histórico y cultural en ${langName}. ${hostLine} Contexto, época, curiosidades. Luego transicioná a la receta completa.`,
       asmr: `Describí la receta de forma lenta y sensorial en ${langName}. ${hostLine} Texturas, aromas, sonidos, temperatura. Frases largas y pausadas.`
     };
 const systemPrompt = `Respondé ÚNICAMENTE con el script de audio listo para leer en voz alta, en ${langName}. Sin títulos, sin markdown, sin corchetes. Solo texto continuo narrado. Máximo 100 palabras. Usá SOLO la información de la receta proporcionada, sin agregar historia, metáforas ni contexto extra. Presentá los ingredientes y pasos de forma directa y clara. ${styles[style] || styles.podcast}`;    let userContent;
