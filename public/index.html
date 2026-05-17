@@ -108,17 +108,7 @@
 </style>
 </head>
 <body>
-<div class="pass-screen" id="passScreen">
-  <div class="pass-box">
-    <div class="pass-logo">Receta<em>Cast</em></div>
-    <div class="pass-sub">Audio Training · Gastronomía</div>
-    <input type="password" class="pass-input" id="passInput" placeholder="Clave de acceso" onkeydown="if(event.key==='Enter')checkPass()">
-    <button class="pass-btn" onclick="checkPass()">Ingresar →</button>
-    <div class="pass-error" id="passError">Clave incorrecta</div>
-  </div>
-</div>
-
-<div class="app" style="display:none;">
+<div class="app">
   <div class="header">
     <div>
       <div class="logo">Receta<em>Cast</em></div>
@@ -171,7 +161,7 @@
     <div class="tts-section" id="ttsSection">
       <div class="field-label">Voz</div>
       <div class="voice-grid">
-        <div class="voice-card selected" onclick="selectVoice(this,'1i1hexhK9bWzFuJ25diL')"><div class="voice-name">Agustín</div><div class="voice-desc">Tu voz · clonada</div></div>
+        <div class="voice-card selected" onclick="selectVoice(this,'1bFnE6tIOObt7z89PtAA')"><div class="voice-name">Agustín</div><div class="voice-desc">Masculino · profesional</div></div>
         <div class="voice-card" onclick="selectVoice(this,'EXAVITQu4vr4xnSDxMaL')"><div class="voice-name">Bella</div><div class="voice-desc">Femenino · cálido</div></div>
         <div class="voice-card" onclick="selectVoice(this,'VR6AewLTigWG4xSOukaG')"><div class="voice-name">Arnold</div><div class="voice-desc">Masculino · profundo</div></div>
         <div class="voice-card" onclick="selectVoice(this,'ThT5KcBeYPX3keUQqHPh')"><div class="voice-name">Dorothy</div><div class="voice-desc">Femenino · dinámico</div></div>
@@ -213,34 +203,9 @@
 </div>
 
 <script>
-
-  // PASSWORD
-  var ACCESS_KEY = 'Negroni5757';
-  var passOk = sessionStorage.getItem('rc_access') === '1';
-  if (!passOk) {
-    document.getElementById('passScreen').style.display = 'flex';
-    document.querySelector('.app').style.display = 'none';
-  } else {
-    document.getElementById('passScreen').style.display = 'none';
-    document.querySelector('.app').style.display = 'block';
-  }
-
-  function checkPass() {
-    var val = document.getElementById('passInput').value;
-    if (val === ACCESS_KEY) {
-      sessionStorage.setItem('rc_access', '1');
-      document.getElementById('passScreen').style.display = 'none';
-      document.querySelector('.app').style.display = 'block';
-    } else {
-      document.getElementById('passError').style.display = 'block';
-      document.getElementById('passInput').value = '';
-      document.getElementById('passInput').focus();
-    }
-  }
-
   let currentScript = '';
   let currentAudioBlob = null;
-  let selectedVoiceId = '1i1hexhK9bWzFuJ25diL';
+  let selectedVoiceId = '1bFnE6tIOObt7z89PtAA';
   let imageBase64 = null;
   let imageMediaType = 'image/jpeg';
   let episodes = [];
