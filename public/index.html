@@ -108,6 +108,67 @@
 </style>
 </head>
 <body>
+
+<!-- PANTALLA DE ACCESO -->
+<div id="rc-lock" style="
+  position:fixed; inset:0; z-index:99999;
+  background:#0e0e0e;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  font-family:'DM Sans',sans-serif;
+">
+  <div style="text-align:center; width:300px;">
+    <div style="font-family:'Playfair Display',serif; font-size:28px; font-weight:600; color:#f0ede6; margin-bottom:6px;">
+      Receta<em style="font-style:italic; color:#d4a853;">Cast</em>
+    </div>
+    <div style="font-family:'DM Mono',monospace; font-size:10px; color:#5c5a55; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:40px;">
+      World Wide Cocktail
+    </div>
+    <input
+      id="rc-pass"
+      type="password"
+      placeholder="Contraseña"
+      autocomplete="off"
+      style="
+        width:100%; padding:14px 18px; border-radius:10px;
+        background:#161616; border:0.5px solid rgba(255,255,255,0.14);
+        color:#f0ede6; font-size:16px; text-align:center;
+        letter-spacing:4px; outline:none; margin-bottom:12px;
+        font-family:'DM Mono',monospace;
+      "
+    />
+    <button onclick="rcUnlock()" style="
+      width:100%; padding:14px; border-radius:10px;
+      background:#d4a853; border:none; color:#0e0e0e;
+      font-size:13px; font-weight:500; letter-spacing:0.1em;
+      text-transform:uppercase; cursor:pointer; font-family:'DM Sans',sans-serif;
+    ">Entrar</button>
+    <div id="rc-err" style="color:#e05a5a; font-size:12px; margin-top:12px; display:none; font-family:'DM Mono',monospace;">
+      Contraseña incorrecta
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var PASS = 'Negroni123';
+    if(sessionStorage.getItem('rc_ok') === '1'){
+      document.getElementById('rc-lock').style.display = 'none';
+    }
+    document.getElementById('rc-pass').addEventListener('keydown', function(e){
+      if(e.key === 'Enter') rcUnlock();
+    });
+    window.rcUnlock = function(){
+      if(document.getElementById('rc-pass').value === PASS){
+        sessionStorage.setItem('rc_ok','1');
+        document.getElementById('rc-lock').style.display = 'none';
+      } else {
+        document.getElementById('rc-err').style.display = 'block';
+        document.getElementById('rc-pass').value = '';
+        document.getElementById('rc-pass').focus();
+      }
+    };
+  })();
+</script>
 <div class="app">
   <div class="header">
     <div>
